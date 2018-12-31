@@ -1,0 +1,117 @@
+.header {
+    background-color:darkseagreen;
+        text-align: center;
+}
+
+.header ul {
+    list-style: none;
+}
+
+.header ul li {
+    display: inline-block;
+    padding: 25px;
+}
+
+.btn{
+    text-decoration: none;
+    color: darkblue;
+    border: solid #5753db 2px;
+    border-radius: 5px; 
+    font-size: 100%;
+    padding: 5px 15px;
+    font-family: fantasy;
+    
+}
+
+.btn:hover { 
+background-color: skyblue;
+    color: white;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    height: 400px;
+}
+
+.hero .content { 
+grid-column: 2;
+text-align: center;
+margin: auto;
+}
+
+.hero .content h1 {
+    color: black;
+    font-size 400%;
+    margin: auto;
+    padding-bottom: 5%
+}
+
+input {
+    padding:5px;
+    border: solid #ccc 1px;
+    font-family: serif;
+    border-radius: 5px;
+}
+
+input:focus {
+    border-color: forestgreen
+}
+
+input[type=submit]{
+    padding: 5px 15px;
+    background:#ccc;
+    border: 0none; 
+}
+
+input[type=submit]:focus {
+    background: #5753db;
+    color: lightgreen;
+    }
+
+.main {
+    text-align: left;
+    font-style: italic;
+    background-color: cornsilk;
+        padding:10% 10%;
+    line-height: 2;
+}
+
+.grid-container1 {
+    height:40%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10%
+}
+
+.grid-container1 div{
+    text-align: center;
+}
+
+.grid-container2 {
+    background-color: darksalmon;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 2fr
+}
+
+.grid-container2 div{
+    vertical-align: middle;
+    text-align: center;
+}
+
+.img-social { 
+height: 40px;
+width: 40px;
+}
+
+iframe{
+    margin: 0 auto;
+    display: block;
+    height: 60%;
+        width: 60%;
+}
+
+.video{
+    background-color:lightcoral;
+}

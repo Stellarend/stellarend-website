@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=480px, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+        <title>Beerku</title>
+        <link rel="icon" type="image/ico" href="icon.png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/container.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/transition.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/dropdown.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/search.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/reset.min.css" />
+        <style>
+			@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+            html {
+                margin: 0;
+                height: 100%;
+                overflow: hidden;
+            }
+            body {
+                margin: 0;
+                height: 100%;
+                background-image: url("bar.jpg");
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+            .container {
+				font-family: 'Open Sans', sans-serif;
+                position: fixed;
+                top: 33%;
+                left: 50%;
+                transform: translate(-55%, -50%);
+                text-align: center;
+                line-height: 1.33;
+                color: #ccc;
+            }
+            h1 {
+                font-family: Garamond, Times New Roman, serif;
+                font-size: 5em;
+                font-style: italic;
+            }
+            p1 {
+                font-size: 1.33em;
+            }
+            @media screen and (min-width: 720px) and (min-height: 480px) {
+                .container {
+                    transform: translate(-50%, -50%);
+                    line-height: 1.55;
+                }
+                h1 {
+                    font-size: 8em;
+                }
+                p1 {
+                    font-size: 1.55em;
+                }
+            }        
+		</style>
+    </head>
+    <body scroll="no" style="overflow: hidden">
+        <div class="ui container">
+            <h1>Beerku</h1>
+            <p1>You should drink</p1>
+            <br/>
+            <p1 class="ui fade" id="beerText"></p1>
+            <br>
+            <p1>while playing</p1>
+            <br/>
+            <select class="ui large search dropdown" id="gameInput" onchange="onChange()">
+                <option value="" disabled selected>Select Game</option>
+            </select>
+            <br/><br/>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/dropdown.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/transition.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/search.min.js"></script>
+        <script>
+            const GAMEDICT = {
+                "League of Legends": "salty water",
+                "Player Unknown's Battlegrounds": "water",
+                "Overwatch": "sparkling water",
+                "Minecraft": "a lava bucket",
+                "Hearthstone": "orange juice",
+                "World of Warcraft": "Kool Aid",
+                "Call of Duty": "nothing",
+                "World Of Tanks": "apple juice",
+                "Grand Theft Auto": "milk",
+                "Fortnite": "green tea",
+                "Dota 2": "colored water"
+            };
+            var dropList, beerText;
+
+            function main() {
+                dropList = $("#gameInput");
+                beerText = $("#beerText");
+
+                let gameHolder = dropList[0];
+                for (var gameName in GAMEDICT) {
+                    let gameNode = document.createElement("option");
+                    gameNode.value = gameName;
+                    gameNode.innerHTML = gameName;
+                    gameHolder.append(gameNode);
+                }
+                dropList.dropdown();
+            }
+
+            function onChange() {
+                if (beerText[0].innerHTML) {
+                    setTimeout(showBeer, 250);
+                    beerText.transition("fade out")
+                } else {
+                    showBeer();
+                }
+            }
+
+            function showBeer() {
+                beerText[0].innerHTML = GAMEDICT[dropList[0].value];
+                beerText.transition("fade in");
+            }
+
+            window.onload = main;
+        </script>
+    </body>
+</html>
